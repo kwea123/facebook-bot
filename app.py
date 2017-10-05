@@ -30,6 +30,7 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
+                    log(message_text)
                     if "beauty" in message_text:
                         text = ""
                         r = requests.get("https://www.ptt.cc/bbs/beauty/index.html")
@@ -45,9 +46,9 @@ def webhook():
                                 text += "https://www.ptt.cc"+a[0]['href']+'\n'
                                 count+=1
                         send_message(sender_id, text)
-                    elif u"歌詞" in message_text:
+                    elif "歌詞" in message_text:
                         text = ""
-                        send_message(sender_id, u"要什麼歌詞?")
+                        send_message(sender_id, "要什麼歌詞?")
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
  
