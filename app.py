@@ -30,6 +30,7 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
                     if "beauty" in message_text:
+                        log("beauty")
                         text = ""
                         r = requests.get("https://www.ptt.cc/bbs/beauty/index.html")
                         soup = bs(r.text,"lxml")
