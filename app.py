@@ -1,4 +1,5 @@
 import os
+import sys
 from bs4 import BeautifulSoup as bs
 import requests
 from flask import Flask, request, make_response, Response
@@ -23,6 +24,7 @@ def webhook():
 
     # endpoint for processing incoming messaging events
     data = request.get_json()
+    log(data)
 
     if data["object"] == "page":
 
@@ -34,7 +36,6 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
-
                     send_message(sender_id, "roger that!")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
@@ -66,6 +67,10 @@ def send_message(recipient_id, message_text):
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+
+def log(message):  # simple wrapper for logging to stdout on heroku
+    print(str(message))
+    sys.stdout.flush()
 
 if __name__ == '__main__':
     app.run()
