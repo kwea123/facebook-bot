@@ -1,0 +1,8 @@
+Flask==0.12.2
+Werkzeug==0.12.2
+Jinja2==2.9.4
+gunicorn==19.7.1
+slackclient==1.0.9
+requests==2.18.4
+beautifulsoup4==4.6.0
+lxml==3.6.4
