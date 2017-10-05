@@ -1,3 +1,4 @@
+#coding=ISO-8859-1
 import os
 import sys
 from bs4 import BeautifulSoup as bs
@@ -44,9 +45,9 @@ def webhook():
                                 text += "https://www.ptt.cc"+a[0]['href']+'\n'
                                 count+=1
                         send_message(sender_id, text)
-                    elif "歌詞".encode('utf-8') in message_text:
+                    elif u"歌詞" in message_text:
                         text = ""
-                        send_message(sender_id, "要什麼歌詞?".encode('utf-8'))
+                        send_message(sender_id, u"要什麼歌詞?")
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
  
