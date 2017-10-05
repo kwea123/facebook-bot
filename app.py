@@ -46,7 +46,7 @@ def webhook():
                         send_message(sender_id, text)
                     else:
                         text = ""
-                        send_message(sender_id, message_text+"­ns")
+                        send_message(sender_id, message_text+u"è¦")
                         
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
