@@ -41,7 +41,6 @@ def webhook():
                             a = div.find_all("a")
                             if len(a)>0:
                                 text += "https://www.ptt.cc"+a[0]['href']+'\n'
-                                break
                         log(text)
                         send_message(sender_id, text)
  
