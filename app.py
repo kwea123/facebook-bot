@@ -1,4 +1,3 @@
-#coding=utf8
 import os
 import sys
 from bs4 import BeautifulSoup as bs
@@ -47,7 +46,7 @@ def webhook():
                         send_message(sender_id, text)
                     else:
                         text = ""
-                        send_message(sender_id, message_text+u"­ns")
+                        send_message(sender_id, message_text+"­ns")
                         
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
