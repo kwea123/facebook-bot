@@ -40,8 +40,7 @@ def webhook():
                         for div in soup.find_all("div", class_="r-ent"):
                             a = div.find_all("a")
                             if len(a)>0:
-                                text += "https://www.ptt.cc"+a[0]['href']+'\n'
-                        log(text)
+                                text += "https://www.ptt.cc"+a[0]['href']+' '
                         send_message(sender_id, text)
  
                 if messaging_event.get("delivery"):  # delivery confirmation
