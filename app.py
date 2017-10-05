@@ -37,10 +37,12 @@ def webhook():
                         prev = page.find_all("a")[1]['href'] # previous page
                         r = requests.get("https://www.ptt.cc"+prev)
                         soup = bs(r.text,"lxml")
+                        count = 0
                         for div in soup.find_all("div", class_="r-ent"):
                             a = div.find_all("a")
-                            if len(a)>0:
-                                text += "https://www.ptt.cc"+a[0]['href']+' '
+                            if len(a)>0 and count<5:
+                                text += "https://www.ptt.cc"+a[0]['href']+'\n'
+                                count+=1
                         send_message(sender_id, text)
  
                 if messaging_event.get("delivery"):  # delivery confirmation
